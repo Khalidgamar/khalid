@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<style>
+.typing-wrapper {
+  direction: rtl;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  min-height: 60px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  background: #25D366;
+  margin-right: 5px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+</style>
+
+<div class="typing-wrapper">
+  <b id="typing-text"></b>
+  <span class="cursor"></span>
+</div>
+
+<script>
+const text = "في أبواب الحديثة، نقدم لك تشكيلة مميزة من الستائر المصممة بعناية لتناسب ذوقك الفريد";
+const typingElement = document.getElementById("typing-text");
+
+let index = 0;
+let isDeleting = false;
+
+function typeLoop() {
+
+  if (!isDeleting) {
+    // كتابة
+    typingElement.innerHTML = text.substring(0, index + 1);
+    index++;
+
+    if (index === text.length) {
+      setTimeout(() => isDeleting = true, 1500); // انتظار قبل المسح
+    }
+  } else {
+    // مسح
+    typingElement.innerHTML = text.substring(0, index - 1);
+    index--;
+
+    if (index === 0) {
+      isDeleting = false;
+    }
+  }
+
+  setTimeout(typeLoop, isDeleting ? 30 : 60);
+}
+
+typeLoop();
+</script>
+</body>
+</html>

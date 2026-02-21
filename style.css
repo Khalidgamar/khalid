@@ -1,0 +1,102 @@
+/* ------------------- Reset Basic ------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+.container{
+    width: 95%;
+    margin: 0 auto ;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    position: relative;
+    height: 10%;
+}
+
+header img {
+    height: 150px; /* حجم اللوجو */
+}
+
+/* ------------------- القائمة الرئيسية ------------------- */
+header ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header ul li {
+    position: relative; /* مهم للـ submenu */
+}
+
+header ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 15px;
+    display: block;
+    transition: background 0.3s, color 0.3s;
+}
+
+header ul li a:hover {
+    color: #8a9ad0;
+    border-radius: 5px;
+}
+
+/* ------------------- submenu ------------------- */
+header ul li ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    display: none;
+    flex-direction: column;
+    min-width: 180px;
+    border-radius: 5px;
+    z-index: 100;
+}
+
+header ul li:hover ul {
+    display: flex;
+    color: #8a9ad0;
+}
+
+header ul li ul li a {
+    padding: 10px 15px;
+    color: #fff;
+}
+
+header ul li ul li a:hover {
+    color: #8a9ad0;
+    text-align: center;
+}
+
+.background-image{
+    width: 100%;
+    height: auto;
+}
+
+/* ------------------- Responsive for Mobile ------------------- */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    header ul li ul {
+        position: relative;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+    }
+}
